@@ -1,0 +1,226 @@
+## Contact form
+
+Add a professional Hebrew RTL contact form to the website.
+
+Place a short version near the bottom of the homepage and also create a dedicated "צור קשר" section/page.
+
+### Form fields
+
+Required:
+
+* שם מלא
+* טלפון
+* אימייל
+* שם העסק
+
+Optional:
+
+* סוג העסק
+* נושא הפנייה
+* הודעה
+
+For "נושא הפנייה", use a dropdown:
+
+* שירותי IT שוטפים
+* מחשבים ותחנות עבודה
+* רשתות ו-Wi-Fi
+* שרתים ותשתיות
+* גיבוי ושחזור
+* שיתוף קבצים מאובטח
+* Microsoft 365
+* אחר
+
+Submit button:
+
+**שלחו פנייה**
+
+After successful submission, display:
+
+**תודה! קיבלנו את הפנייה ונחזור אליכם בהקדם.**
+
+### Form behavior
+
+The form must:
+
+* Work correctly in Hebrew RTL.
+* Validate email and phone fields.
+* Show clear validation errors.
+* Prevent accidental duplicate submissions.
+* Have a loading state while submitting.
+* Show a clear success/error message.
+* Work perfectly on mobile.
+* Include basic spam protection/honeypot.
+* Never expose API keys or credentials in frontend code.
+
+### Lead notification
+
+When a visitor submits the form, send the lead to:
+
+**[mohammad@saratec.net](mailto:mohammad@saratec.net)**
+
+The email should contain:
+
+* Name
+* Phone
+* Email
+* Company
+* Selected service
+* Message
+* Submission date/time
+* Landing page
+* UTM/source information if available
+
+Also record the submission in a simple database or backend so leads are not dependent only on email delivery.
+
+---
+
+# Analytics
+
+Add privacy-friendly website analytics similar to Google Analytics.
+
+Track:
+
+### Basic visitor analytics
+
+* Number of visitors
+* Page views
+* Sessions
+* Most visited pages
+* New vs returning visitors
+* Device type
+* Browser
+* Operating system
+* Country/region where reasonably available
+* Referrer/source
+* UTM campaign parameters
+
+### Conversion tracking
+
+Track important actions as events:
+
+* WhatsApp button clicked
+* Phone number clicked
+* Email clicked
+* Contact form opened
+* Contact form submitted successfully
+* Service card clicked
+* Backup service CTA clicked
+* File-sharing CTA clicked
+
+Create meaningful event names, for example:
+
+`whatsapp_click`
+`phone_click`
+`email_click`
+`contact_form_submit`
+`backup_cta_click`
+`file_sharing_cta_click`
+
+Do not collect unnecessary personally identifiable information in analytics events.
+
+---
+
+# Analytics implementation
+
+Prefer a privacy-friendly analytics solution such as **Matomo** or another self-hostable analytics platform.
+
+If using an external analytics service, keep the analytics integration isolated in a reusable component/module so it can easily be replaced later.
+
+Do not hard-code analytics credentials directly into the source code.
+
+Use environment variables for:
+
+* Analytics URL
+* Site/property ID
+* API keys or tokens when required
+
+Create a simple configuration such as:
+
+`ANALYTICS_ENABLED=true`
+
+so analytics can be disabled without modifying application code.
+
+---
+
+# Technical requirements for Lovable/Replit
+
+If the website is implemented using a modern framework such as React/Next.js, use a clean analytics abstraction rather than scattering analytics calls throughout the application.
+
+Create something conceptually similar to:
+
+`analytics.track("whatsapp_click")`
+
+and:
+
+`analytics.track("contact_form_submit")`
+
+The implementation should allow Matomo, Google Analytics, Plausible, Umami, or another analytics provider to be swapped later without rewriting the website.
+
+Keep analytics completely separate from the core website functionality.
+
+---
+
+# Privacy
+
+Add a simple Hebrew privacy notice explaining that the website uses cookies or analytics technologies if applicable.
+
+Do not collect sensitive personal information through analytics.
+
+The contact form and analytics system must comply with applicable Israeli privacy requirements.
+
+Do not store passwords, payment information, or unnecessary personal information.
+
+---
+
+# Admin / lead management
+
+If a backend/database is available, create a simple protected admin view where Saratec can see submitted leads.
+
+Display:
+
+| Date | Name | Business | Phone | Email | Service | Status |
+
+Lead status:
+
+* חדש
+* בטיפול
+* נסגר
+* לא רלוונטי
+
+The admin area must require authentication and must never be publicly accessible.
+
+Keep the admin system simple. This is a small-business lead management feature, not a full CRM.
+
+---
+
+# Architecture
+
+Prefer a simple maintainable architecture:
+
+Frontend:
+
+* Modern responsive framework
+* Hebrew RTL
+* Accessible components
+
+Backend:
+
+* Small API for contact submissions
+* Validation
+* Spam protection
+* Email notification
+* Database persistence
+
+Analytics:
+
+* Matomo / privacy-friendly analytics
+* Event tracking abstraction
+
+Configuration:
+
+* Environment variables
+* No secrets committed to Git
+
+The implementation should be easy to deploy and maintain on a VPS, Docker, or a modern hosting platform.
+
+Do not over-engineer this system.
