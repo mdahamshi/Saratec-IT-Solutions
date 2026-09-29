@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Saratec – סאראטק"
+description = "A modern Hebrew RTL lead-generation website for Saratec, an IT services and business infrastructure partner serving small and medium-sized businesses in northern Israel."
+version = "1.0.0"
+id = "artifacts/saratec-site"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22212
+
+[services.development]
+run = "pnpm --filter @workspace/saratec-site run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/saratec-site", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/saratec-site/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22212"
+BASE_PATH = "/"
