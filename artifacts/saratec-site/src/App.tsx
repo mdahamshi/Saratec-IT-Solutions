@@ -39,7 +39,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { TooltipProvider } from '@/components/ui/tooltip';
 import NotFound from '@/pages/not-found';
 import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
-import brandLogo from '@assets/heb_1790701719395.png';
+import brandLogo from '@assets/heb_1790771890057.svg';
 
 const queryClient = new QueryClient();
 const whatsappHref =
