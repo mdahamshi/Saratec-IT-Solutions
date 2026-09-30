@@ -42,8 +42,23 @@ import { Route, Switch, useLocation, Router as WouterRouter } from 'wouter';
 import brandLogo from './assets/brand-logo.svg';
 
 const queryClient = new QueryClient();
-const whatsappHref =
-  'https://wa.me/?text=%D7%A9%D7%9C%D7%95%D7%9D%20%D7%A1%D7%90%D7%A8%D7%90%D7%98%D7%A7%2C%20%D7%90%D7%A9%D7%9E%D7%97%20%D7%9C%D7%A9%D7%9E%D7%95%D7%A2%20%D7%A2%D7%9C%20%D7%A9%D7%99%D7%A8%D7%95%D7%AA%D7%99%20%D7%94%D7%9E%D7%97%D7%A9%D7%91%20%D7%95%D7%94%D7%AA%D7%A9%D7%AA%D7%99%D7%AA';
+const createWhatsappHref = (message: string) =>
+  `https://wa.me/?text=${encodeURIComponent(message)}`;
+const whatsappHref = createWhatsappHref(
+  'שלום סאראטק, אשמח לשמוע על שירותי ה-IT והתשתיות לעסק שלי.',
+);
+const heroWhatsappHref = createWhatsappHref(
+  'שלום סאראטק, רציתי לשמוע איך תוכלו לעזור לעסק שלי עם שירותי IT ותשתיות.',
+);
+const backupWhatsappHref = createWhatsappHref(
+  'שלום סאראטק, רציתי לשמוע יותר על שירותי הגיבוי שאתם מציעים.',
+);
+const shareWhatsappHref = createWhatsappHref(
+  'שלום סאראטק, רציתי לשמוע עוד על שיתוף קבצים מאובטח וניהול הרשאות.',
+);
+const contactWhatsappHref = createWhatsappHref(
+  'שלום סאראטק, אשמח להתייעץ לגבי שירותי IT ותשתיות לעסק שלי.',
+);
 
 type IconType = typeof Server;
 
@@ -184,7 +199,7 @@ function Home() {
               <div className="hero-actions">
                 <a
                   className="primary-button"
-                  href={whatsappHref}
+                  href={heroWhatsappHref}
                   target="_blank"
                   rel="noreferrer"
                   data-testid="link-hero-whatsapp"
@@ -372,6 +387,16 @@ function Home() {
                   תכנית התאוששות ברורה, לא רק תקווה
                 </li>
               </ul>
+              <a
+                className="primary-button"
+                href={backupWhatsappHref}
+                target="_blank"
+                rel="noreferrer"
+                data-testid="link-backup-whatsapp"
+              >
+                <MessageCircle size={17} aria-hidden="true" />
+                לשמוע על שירותי הגיבוי
+              </a>
             </div>
             <div className="backup-diagram" aria-label="מערך גיבוי רב-שכבתי">
               <div className="backup-ring">
@@ -432,7 +457,7 @@ function Home() {
                 העולם. אנחנו מסדרים את התיקיות, ההרשאות והגישה — כדי שהצוות יעבוד
                 מהר, בלי לאבד שליטה על המידע.
               </p>
-              <a className="outline-button" href={whatsappHref} target="_blank" rel="noreferrer" data-testid="link-share-whatsapp">
+              <a className="outline-button" href={shareWhatsappHref} target="_blank" rel="noreferrer" data-testid="link-share-whatsapp">
                 בואו נסדר את המידע
                 <ArrowLeft size={17} aria-hidden="true" />
               </a>
@@ -529,7 +554,7 @@ function Home() {
             <div className="cta-actions">
               <a
                 className="primary-button"
-                href={whatsappHref}
+                href={contactWhatsappHref}
                 target="_blank"
                 rel="noreferrer"
                 data-testid="link-contact-whatsapp"
