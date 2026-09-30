@@ -537,9 +537,9 @@ function Home() {
                 <MessageCircle size={18} aria-hidden="true" />
                 כתבו לנו ב-WhatsApp
               </a>
-              <a className="outline-button" href="mailto:mohammad@saratec.net" data-testid="link-contact-email">
+              <a className="outline-button" href="mailto:info@saratec.net" data-testid="link-contact-email">
                 <Mail size={17} aria-hidden="true" />
-                mohammad@saratec.net
+                info@saratec.net
               </a>
             </div>
           </div>
@@ -565,9 +565,9 @@ function Home() {
             <div className="footer-column">
               <h3>דברו איתנו</h3>
               <div className="footer-contact">
-                <a href="mailto:mohammad@saratec.net" data-testid="link-footer-email">
+                <a href="mailto:info@saratec.net" data-testid="link-footer-email">
                   <Mail size={15} aria-hidden="true" />
-                  mohammad@saratec.net
+                  info@saratec.net
                 </a>
                 <a href={whatsappHref} target="_blank" rel="noreferrer" data-testid="link-footer-whatsapp">
                   <MessageCircle size={15} aria-hidden="true" />
